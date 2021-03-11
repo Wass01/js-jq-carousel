@@ -3,16 +3,26 @@ $(document).ready(function (){
 });
 
 function slideImg() {
-  var slideDx = $(".next > i");
-  var slideSx = $(".prev > i");
-  var image = $(".images > .first");
-  var circle = $(".nav > .first");
+  var image = $(".images > .active");
+  var circle = $(".nav > .active");
 
-  slideDx.click(function (){
-    image.removeClass("active").next().addClass("active");
+  var imgFirst = $("img .first");
+  var imgLast = $("img .last");
+  var iFirst = $("i .first");
+  var iLast = $("i .last");
 
+  // scorrimento dx
+  $(".next > i").click(function (){
+    image.removeClass("active");
+    circle.removeClass("active");
 
-    circle.removeClass("active").next().addClass("active");
-
+    if (image.hasClass("last")) {
+      imgFirst.addClass("active");
+      iFirst.addClass("active");
+    } else {
+      image.next().addClass("active");
+      circle.next().addClass("active");
+    }
   });
+
 }
