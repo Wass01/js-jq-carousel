@@ -8,8 +8,11 @@ function slideImg() {
   var image = $(".images > img");
 
   slideDx.click(function (){
-    image.removeClass("active").next().addClass("active");
-
+    if (image.hasClass("active")) {
+      image.removeClass("active").next().addClass("active");
+    } else {
+      image.removeClass("active").next();
+    }
 
   });
 }
